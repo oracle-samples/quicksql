@@ -46,6 +46,12 @@
 4. [Settings](#settings)
 5. [Grammar](#grammar) -->
 
+## Comments
+
+A comment can appear between any keywords, parameters, or punctuation marks in a statement. You can include a comment in a statement in two ways:
+- Begin the comment with a slash and an asterisk (/*). Proceed with the text of the comment. This text can span multiple lines. End the comment with an asterisk and a slash (*/). The opening and terminating characters need not be separated from the text by a space or a line break.
+- Begin the comment with -- (two hyphens). Proceed with the text of the comment. This text cannot extend to a new line. End the comment with a line break.
+
 ## Datatypes
 
 <!-- markdownlint-disable MD013 -->
