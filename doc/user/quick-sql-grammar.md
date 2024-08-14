@@ -46,6 +46,12 @@
 4. [Settings](#settings)
 5. [Grammar](#grammar) -->
 
+## Comments
+
+A comment can appear between any keywords, parameters, or punctuation marks in a statement. You can include a comment in a statement in two ways:
+- Begin the comment with a slash and an asterisk (/*). Proceed with the text of the comment. This text can span multiple lines. End the comment with an asterisk and a slash (*/). The opening and terminating characters need not be separated from the text by a space or a line break.
+- Begin the comment with -- (two hyphens). Proceed with the text of the comment. This text cannot extend to a new line. End the comment with a line break.
+
 ## Datatypes
 
 <!-- markdownlint-disable MD013 -->
@@ -271,7 +277,7 @@ setting to override this default.
 **Possible Values**: `11g`, `12c`, `19c`, `21c`, `23c`
 **Default Value**: `19c`
 
-Specifies the database version the syntax should be compatible with.
+Specifies the database version the syntax should be compatible with. The version string is reduced to major version number.  Therefore, 23, 23c, 23ai, and 23.1.1 are all legitimate values equivalent to 21.
 
 ### drop
 
