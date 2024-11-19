@@ -2,8 +2,10 @@ import { defineConfig } from 'vite';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { readFile, writeFile } from 'fs/promises';
 
 import * as buildConstants from './build-constants.js';
+
 
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = path.dirname( __filename );
@@ -64,5 +66,20 @@ export default defineConfig( ( { command: pCommand, mode: pMode, ssrBuild: pSsrB
             emptyOutDir: false,
             ...gBuildOptions
         },
+        plugins: [ {
+            name: 'generate-umd-with-js-extension',
+            closeBundle: async () => {
+                async function generateUMDWithJSExtension( fileName ) {
+                    const fileContent = await readFile( path.join( __dirname, 'dist', fileName + '.umd.cjs' ), 'utf-8' );
+                    await writeFile( path.join( path.join( __dirname, 'dist', fileName + '.umd.js' ) ), fileContent );
+                }
+
+                if ( gTargetLibrary === 'DDL' ) {
+                    await generateUMDWithJSExtension( buildConstants.__DDL_LIBRARY_FILE_NAME__ );
+                } else if ( gTargetLibrary === 'ERD' ) {
+                    await generateUMDWithJSExtension( buildConstants.__ERD_LIBRARY_FILE_NAME__ );
+                }
+            }
+        } ]
     };
 } );
