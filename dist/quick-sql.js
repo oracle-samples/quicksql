@@ -9354,7 +9354,7 @@ function Le(u, m) {
   return new j(u, m).getErrors();
 }
 function oe() {
-  return "1.2.12";
+  return "1.2.13";
 }
 j.version = oe;
 j.toDDL = Ee;
